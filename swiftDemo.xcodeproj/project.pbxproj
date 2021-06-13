@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1893796B24752C0D0077511A /* AppComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893796A24752C0D0077511A /* AppComposite.swift */; };
+		18B821952663CB7000D3C239 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B821942663CB7000D3C239 /* Box.swift */; };
+		18B821972663CC7F00D3C239 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B821962663CC7F00D3C239 /* WeatherViewModel.swift */; };
+		18B821992663CE7600D3C239 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B821982663CE7600D3C239 /* WeatherViewController.swift */; };
+		18B8219B2663D29F00D3C239 /* LocationGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8219A2663D29F00D3C239 /* LocationGeocoder.swift */; };
+		18B8219D2663D32300D3C239 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8219C2663D32300D3C239 /* Location.swift */; };
 		AD4DA5BF9071A775AFEE5628 /* Pods_swiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C6368FF32A88CA1C9C60A9 /* Pods_swiftDemo.framework */; };
 		D0016CB52193DB0B00C848CD /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0016CB42193DB0B00C848CD /* WaveView.swift */; };
 		D01806C621AF8B1F00625DEB /* RunLoopTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01806C521AF8B1F00625DEB /* RunLoopTest.swift */; };
@@ -62,6 +67,12 @@
 
 /* Begin PBXFileReference section */
 		1893796A24752C0D0077511A /* AppComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppComposite.swift; path = swiftDemo/AppDelegate/AppComposite.swift; sourceTree = "<group>"; };
+		18B821942663CB7000D3C239 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		18B821962663CC7F00D3C239 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		18B821982663CE7600D3C239 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		18B8219A2663D29F00D3C239 /* LocationGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationGeocoder.swift; sourceTree = "<group>"; };
+		18B8219C2663D32300D3C239 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		18B8219E2664D8EE00D3C239 /* demo.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = demo.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D0016CB42193DB0B00C848CD /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		D01806C521AF8B1F00625DEB /* RunLoopTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoopTest.swift; sourceTree = "<group>"; };
 		D01AA1F12174891300092AAC /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -135,6 +146,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18B821932663CB5000D3C239 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				18B8219C2663D32300D3C239 /* Location.swift */,
+				18B8219A2663D29F00D3C239 /* LocationGeocoder.swift */,
+				18B821942663CB7000D3C239 /* Box.swift */,
+				18B821962663CC7F00D3C239 /* WeatherViewModel.swift */,
+				18B821982663CE7600D3C239 /* WeatherViewController.swift */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
 		D0016CB32193DAEB00C848CD /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +339,7 @@
 		E721EEC0210166C9007F91E0 = {
 			isa = PBXGroup;
 			children = (
+				18B8219E2664D8EE00D3C239 /* demo.playground */,
 				1893796A24752C0D0077511A /* AppComposite.swift */,
 				D0DC374A21DDE35E001D5556 /* Sort.playground */,
 				D0DC374921DDDE24001D5556 /* Queue.playground */,
@@ -340,6 +364,7 @@
 		E721EECB210166C9007F91E0 /* swiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				18B821932663CB5000D3C239 /* MVVM */,
 				D022474621FEAB5C0079ED7B /* RXSwift */,
 				D08066C621F05F6100FE9943 /* Router */,
 				D00A679021E834C70046829B /* KeyBoradEmoji */,
@@ -503,6 +528,7 @@
 				D026A54321CCC82900BA4B76 /* Appearance.swift in Sources */,
 				D08066C821F05F7D00FE9943 /* LoginController.swift in Sources */,
 				D0DC373A21D32CC5001D5556 /* AppMediator.swift in Sources */,
+				18B821972663CC7F00D3C239 /* WeatherViewModel.swift in Sources */,
 				D0674F7121159397007FE9A1 /* RefreshExtension.swift in Sources */,
 				E721EECF210166C9007F91E0 /* ViewController.swift in Sources */,
 				D0DC374321D468DE001D5556 /* DesignPart2.swift in Sources */,
@@ -511,11 +537,14 @@
 				D0C9B94021D21726009F4634 /* Department.swift in Sources */,
 				D0788D4A21F5703F00F5129D /* EmojiKeyboardDefine.swift in Sources */,
 				E762B93C210822D000B0E9E4 /* ChildController.swift in Sources */,
+				18B8219D2663D32300D3C239 /* Location.swift in Sources */,
 				D0674F6F211591D7007FE9A1 /* IndicatorView.swift in Sources */,
 				D083938C219C00EE00A052F1 /* TableController.swift in Sources */,
 				D01806C621AF8B1F00625DEB /* RunLoopTest.swift in Sources */,
+				18B821992663CE7600D3C239 /* WeatherViewController.swift in Sources */,
 				D0016CB52193DB0B00C848CD /* WaveView.swift in Sources */,
 				D0D58C4521807502006E82D6 /* Enum.swift in Sources */,
+				18B8219B2663D29F00D3C239 /* LocationGeocoder.swift in Sources */,
 				D026A54121CC840800BA4B76 /* Observable.swift in Sources */,
 				D0DC374521DC5F0D001D5556 /* EmojiController.swift in Sources */,
 				D0EE9DA12171984B00744D98 /* ButtonExtension.swift in Sources */,
@@ -528,6 +557,7 @@
 				D0674F6D21156AA3007FE9A1 /* RefreshView.swift in Sources */,
 				D0FA22E0219E5F1F004FE96F /* SlideChildController.swift in Sources */,
 				D09AC83E21A9331F00935C36 /* TextKitLabel.swift in Sources */,
+				18B821952663CB7000D3C239 /* Box.swift in Sources */,
 				D022474821FEAB850079ED7B /* RXSwiftDemo.swift in Sources */,
 				D03A13ED2186B50700DDB577 /* PageStack.swift in Sources */,
 				D0C9B94221D2189C009F4634 /* Dao.swift in Sources */,
