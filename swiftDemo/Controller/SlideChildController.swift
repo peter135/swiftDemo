@@ -10,48 +10,104 @@ import Foundation
 
 import UIKit
 
-class SlideChildController: UIViewController {
+class ValueListener<T> {
     
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
+    var value:T?{
+        didSet{
+            listener?(value)
+        }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        
-        fatalError("init(coder:) has not been implemented")
-        
+    init(_ value:T?){
+        self.value = value
     }
     
-    deinit {
-        
-        
-        
+    private var listener:((T?)->Void)?
+    
+    func  bind(_ listener:@escaping((T?)->Void))  {
+        listener(value)
+        self.listener = listener
     }
     
-    
-    public var container:UIScrollView = {
-        
-        let containerLazy = UIScrollView()
-        containerLazy.backgroundColor = .white
-        
-        containerLazy.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 88 - 49 )
-        containerLazy.contentSize = CGSize(width: kScreenWidth, height: kScreenHeight )
+}
 
-        return containerLazy
-        
+struct UserModel: Codable {
+    let name: String
+}
+
+struct UserListViewModel {
+    var users : ValueListener<[UserTableViewCellViewModel]> = ValueListener([])
+    
+    
+}
+
+struct UserTableViewCellViewModel {
+    let name: String
+    
+}
+
+
+class SlideChildController: UIViewController, UITableViewDataSource{
+    
+    
+    //MARK: Views
+    private let tableView:UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return table
     }()
+    
+    private var viewModel = UserListViewModel()
+    
+    
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(container)
+         super.viewDidLoad()
+         view.backgroundColor = .white
+         view.addSubview(tableView)
+         tableView.frame = view.bounds
+         tableView.dataSource = self
         
+         viewModel.users.bind { [weak self] _ in
+             DispatchQueue.main.async {
+                 self?.tableView.reloadData()
+             }
+         }
+        
+        fetchData()
+     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.users.value?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = viewModel.users.value?[indexPath.row].name
+        return cell
+    }
     
+    func fetchData() {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/user") else {
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url){(data,_,_) in
+            guard let data = data else {return}
+            do{
+                let userModels = try JSONDecoder().decode([UserModel].self, from: data)
+                self.viewModel.users.value = userModels.compactMap({
+                    UserTableViewCellViewModel(name: $0.name)
+                })
+                
+            }catch{
+                
+            }
+            
+        }
+        
+        task.resume()
+    }
     
 }

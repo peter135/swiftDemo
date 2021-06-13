@@ -264,14 +264,10 @@ class SliderController: BaseController,UIScrollViewDelegate {
         }
         
         let controller1 = SlideChildController()
-        controller1.container.backgroundColor = .red
         
         let controller2 = SlideChildController()
-        controller2.container.backgroundColor = .green
 
         let controller3 = SlideChildController()
-        controller3.container.backgroundColor = .blue
-
         
         self.controllers = [controller1,controller2,controller3]
         
